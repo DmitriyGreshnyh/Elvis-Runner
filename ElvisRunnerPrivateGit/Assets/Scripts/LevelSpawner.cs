@@ -19,7 +19,7 @@ public class LevelSpawner : MonoBehaviour
         get { return _platformSpeed; }
         set { _platformSpeed = value; }
     }
-   
+
 
     private void Awake()
     {
@@ -38,11 +38,19 @@ public class LevelSpawner : MonoBehaviour
     } 
 
 
-    [ContextMenu("CreatePlatform()")]
+    
     private void CreatePlatform()
     {
         Vector3 pos = LastPlatformPosition.position;
         Instantiate(_tilePrefab, pos, Quaternion.identity, transform);
     }
 
+    [ContextMenu("CreatePlatformsInEditor()")]
+    private void CreatePlatformsInEditor()
+    {
+        Vector3 pos;
+        if (LastPlatformPosition == null) pos = transform.position;
+        else pos = LastPlatformPosition.position;
+        Instantiate(_tilePrefab, pos, Quaternion.identity, transform);
+    }
 }
