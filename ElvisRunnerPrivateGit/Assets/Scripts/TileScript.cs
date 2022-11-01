@@ -3,11 +3,11 @@ using UnityEngine;
 public class TileScript : MonoBehaviour
 {
     [SerializeField] private Transform _tileEnd;
-    private LevelSpawner _spawner;
+    protected LevelSpawner _spawner;
 
 
 
-    private void Awake()
+    virtual protected void Awake()
     {
         _spawner = LevelSpawner.Instance;
         _spawner.LastPlatformPosition = _tileEnd;
@@ -16,7 +16,7 @@ public class TileScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position -= Vector3.forward* _spawner.PlatformSpeed * Time.deltaTime;
+        transform.position -= Vector3.forward* LevelSpawner.Instance.PlatformSpeed * Time.deltaTime;
     }
 
 
