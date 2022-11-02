@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public sealed class CharacterMovement : MonoBehaviour
 {
     private CharacterController _characterController;
 
@@ -38,6 +38,28 @@ public class CharacterMovement : MonoBehaviour
 
         _linePositions = new float[] { transform.position.x - _lineOffset, transform.position.x, transform.position.x + _lineOffset };
         _targetPosition = SetHandles.SetVector3x(transform.position, _linePositions[_lineCurrent]);
+
+        CharacterObstacleReaction.OnObstacleHit += OnObstacleHit;
+
+    }
+    
+    private void OnObstacleHit(string sideName)
+    {
+        switch (sideName) {
+            case "front":
+                print(1);
+                break;
+            case "right":
+                print(2);
+                break;
+            case "left":
+                print(3);
+                break;
+            default:
+                print(4);
+                break;
+
+                }
     }
 
     private void Update()
