@@ -123,6 +123,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &36753532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5674765232268221809, guid: 7850a8d693ad7134a9894cb9489f9ec3, type: 3}
+  m_PrefabInstance: {fileID: 8804663185524442322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &36753536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36753532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7075a4812384804ebef2eb50858e6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sideName: 2
 --- !u!43 &40933896
 Mesh:
   m_ObjectHideFlags: 0
@@ -1139,6 +1157,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1494654839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6691219716809393492, guid: 7850a8d693ad7134a9894cb9489f9ec3, type: 3}
+  m_PrefabInstance: {fileID: 8804663185524442322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1494654843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494654839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7075a4812384804ebef2eb50858e6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sideName: 0
+--- !u!1 &1600307198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5211526902347270804, guid: 7850a8d693ad7134a9894cb9489f9ec3, type: 3}
+  m_PrefabInstance: {fileID: 8804663185524442322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1600307202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600307198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7075a4812384804ebef2eb50858e6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sideName: 1
 --- !u!850595691 &1648281679
 LightingSettings:
   m_ObjectHideFlags: 0
