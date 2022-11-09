@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public sealed class CharacterMovement : MonoBehaviour
 {
     private CharacterController _characterController;
 
@@ -38,6 +39,33 @@ public class CharacterMovement : MonoBehaviour
 
         _linePositions = new float[] { transform.position.x - _lineOffset, transform.position.x, transform.position.x + _lineOffset };
         _targetPosition = SetHandles.SetVector3x(transform.position, _linePositions[_lineCurrent]);
+
+        CharacterObstacleReaction.OnObstacleHit += OnObstacleHit;
+
+    }
+    
+    private void OnObstacleHit(string sideName)
+    {
+        switch (sideName) {
+            case "front":
+                print(1);
+                break;
+            case "right":
+                _lineCurrent--;
+                print(2);
+                break;
+            case "left":
+                _lineCurrent++;
+                print(3);
+                break;
+            default:
+                print(4);
+                break;
+
+                }
+
+        _targetPosition = SetHandles.SetVector3x(transform.position, _linePositions[_lineCurrent]);
+        _isChangingLine = true;
     }
 
     private void Update()
@@ -48,8 +76,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ChangePlayerPosition();
-
+         ChangePlayerPosition();
+     
         if (!_characterController.isGrounded && !_isJump) _targetPosition.y += _gravityForce*Time.deltaTime;
 
     }
@@ -80,6 +108,7 @@ public class CharacterMovement : MonoBehaviour
             _lineCurrent--;
         }
 
+       
         _isChangingLine = true;
 
         _targetPosition = SetHandles.SetVector3x(transform.position, _linePositions[_lineCurrent]);
@@ -92,8 +121,20 @@ public class CharacterMovement : MonoBehaviour
 
         _characterController.Move(direction * Time.deltaTime * _lineChangingSpeed);
 
-        if (Mathf.Abs(direction.x) < 0.5f) _isChangingLine = false;
+        if (Mathf.Abs(direction.x) < 0.1f) _isChangingLine = false;
     }
+
+    IEnumerator ChangePlayerPositionCoroutine()
+    {
+        Vector3 direction = _targetPosition - transform.position;
+        while (Mathf.Abs(direction.x) < 0.5f)
+        {
+            direction = _targetPosition - transform.position;
+            _characterController.Move(direction * Time.deltaTime * _lineChangingSpeed);
+        }
+        yield return null;
+    }
+
 
     private void JumpSlide()
     {
@@ -118,8 +159,6 @@ public class CharacterMovement : MonoBehaviour
             StartCoroutine(Sliding());
             _isSliding = true;
         }
-
-
 
     }
 
